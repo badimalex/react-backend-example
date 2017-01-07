@@ -4,10 +4,10 @@ import Image from './Image';
 import TextBox from './TextBox';
 
 class BlogItem extends React.Component {
-   render() {
+  render() {
     return (
       React.createElement(
-        "div",
+        'div',
         { className: 'blog-item' },
         React.createElement(
           Image,
