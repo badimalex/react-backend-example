@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
+import { CardImg } from 'reactstrap';
 
 const Image = ({src, width, height, alt}) => (
-  React.createElement(
-    'img', { src, width, height, alt }
-  )
+  <CardImg top width={width} height={height} src={src} alt={alt} />
 );
 
 Image.propTypes = {

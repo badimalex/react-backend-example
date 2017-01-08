@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
+import { Button } from 'reactstrap';
 
 const Like = ({likes, likeHandler}) => (
   <div>
-    <span>Likes: {likes}</span>
-    <button onClick={likeHandler}>+</button>
+    <Button outline color="success" onClick={likeHandler}>Like {likes}</Button>
   </div>
 );
 

@@ -6,7 +6,8 @@ export const items = [
       width: 36,
       height: 36,
     },
-    text: 'Post 1'
+    title: 'Post 1'
+    , desc: 'Post description 1'
     , meta: {
       author: 'John'
       , createdAt: 'October 13, 2014 11:13:00'
@@ -21,7 +22,8 @@ export const items = [
       width: 36,
       height: 36,
     },
-    text: 'Post 2'
+    title: 'Post 2'
+    , desc: 'Post description 2'
     , meta: {
       author: 'Ivan'
       , createdAt: 'December 13, 2014 11:13:00'
@@ -36,7 +38,8 @@ export const items = [
       width: 36,
       height: 36,
     },
-    text: 'Post 3'
+    title: 'Post 3'
+    , desc: 'Post description 3'
     , meta: {
       author: 'Dima'
       , createdAt: 'September 13, 2014 11:13:00'

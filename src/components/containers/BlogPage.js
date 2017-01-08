@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
+import { Row, Col } from 'reactstrap';
 
 import { items as staticItems } from 'constants/static/items';
 
@@ -23,15 +24,23 @@ class BlogPage extends React.Component {
 
   getChartData() {
     const { items } = this.state;
-    return _.map(items, (i) => [i.text, i.meta.likes] );
+    return _.map(items, (i) => [i.title, i.meta.likes] );
   }
 
   render() {
     const { items } = this.state;
     return (
       <div className="blog-page">
-        <BlogList items={items} likeHandler={ this.likeHandler } />
-        <PieChart columns={this.getChartData()} />
+        <Row>
+          <Col>
+            <BlogList items={items} likeHandler={ this.likeHandler } />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <PieChart columns={this.getChartData()} />
+          </Col>
+        </Row>
       </div>
     );
   }
