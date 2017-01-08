@@ -1,7 +1,8 @@
 import React from 'react';
+import { CardText } from 'reactstrap';
 
 const TextBox = ({children}) => (
-  <p>{children}</p>
+  <CardText>{children}</CardText>
 );
 
 export default TextBox;
