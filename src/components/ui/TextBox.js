@@ -1,7 +1,7 @@
-import { DOM } from 'react';
+import React from 'react';
 
-const TextBox = ({text}) => (
-  DOM.span(null, text)
+const TextBox = ({children}) => (
+  <p>{children}</p>
 );
 
 export default TextBox;
