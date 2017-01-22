@@ -8,7 +8,8 @@ const Like = ({likes, likeHandler}) => (
 );
 
 Like.propTypes = {
-  count: PropTypes.number
+  likes: PropTypes.number,
+  likeHandler: PropTypes.func
 };
 
 export default Like;
