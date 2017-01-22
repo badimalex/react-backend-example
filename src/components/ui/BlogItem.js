@@ -5,25 +5,24 @@ import { Card, CardBlock,
 import moment from 'moment';
 
 import Image from './Image';
-import TextBox from './TextBox';
 import Like from './Like';
 
-const BlogItem = ({item, likeHandler}) => (
+const BlogItem = ({image, title, desc, meta, likeHandler}) => (
   <Card className='blog-item'>
-    <Image {...item.image} />
+    <Image {...image} />
     <CardBlock>
-      <CardTitle> { item.title } </CardTitle>
-      <TextBox> { item.desc } </TextBox>
+      <CardTitle> { title } </CardTitle>
+      <CardText> { desc } </CardText>
       <CardText>
         <small className="text-muted">
           {
-            'by ' + item.meta.author +
-            ', on ' + moment(item.meta.createdAt).format('L') +
-            ', updated ' + moment(item.meta.updatedAt).format('L')
+            `by ${meta.author},
+            on ${moment(meta.createdAt).format('L')},
+            updated ${moment(meta.updatedAt).format('L')}`
           }
         </small>
       </CardText>
-      <Like likes={item.meta.likes} likeHandler={ likeHandler } />
+      <Like likes={meta.likes} likeHandler={ likeHandler } />
     </CardBlock>
   </Card>
 );
@@ -32,7 +31,8 @@ BlogItem.propTypes = {
   image: PropTypes.shape(Image.propTypes),
   title: PropTypes.string,
   desc: PropTypes.string,
-  meta: PropTypes.object
+  meta: PropTypes.object,
+  likeHandler: PropTypes.func
 };
 
 export default BlogItem;

@@ -17,14 +17,14 @@ class BlogPage extends React.Component {
 
   likeHandler(id) {
     const { items } = this.state;
-    let item = _.find(items, (o) => o.id == id );
+    const item = _.find(items, (o) => o.id == id);
     item.meta.likes += 1;
-    this.setState({ items: items });
+    this.setState({ items });
   }
 
   getChartData() {
     const { items } = this.state;
-    return _.map(items, (i) => [i.title, i.meta.likes] );
+    return _.map(items, (i) => [i.title, i.meta.likes]);
   }
 
   render() {
@@ -47,7 +47,7 @@ class BlogPage extends React.Component {
 }
 
 BlogPage.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes))
+  items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
 };
 
 export default BlogPage;

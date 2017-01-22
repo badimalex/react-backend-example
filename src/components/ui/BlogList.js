@@ -9,7 +9,7 @@ const BlogList = ({items, likeHandler}) => (
     {
       _.map(items, (item) =>
         <BlogItem key={item.id}
-          item={item}
+          {...item}
           likeHandler={ () => likeHandler(item.id) }
         />
       )
@@ -18,7 +18,8 @@ const BlogList = ({items, likeHandler}) => (
 );
 
 BlogList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes))
+  items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
+  likeHandler: PropTypes.func
 };
 
 export default BlogList;

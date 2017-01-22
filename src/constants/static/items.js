@@ -10,8 +10,8 @@ export const items = [
     , desc: 'Post description 1'
     , meta: {
       author: 'John'
-      , createdAt: 'October 13, 2014 11:13:00'
-      , updatedAt: 'November 13, 2014 11:13:00'
+      , createdAt: '2017-01-08 09:30:26'
+      , updatedAt: '2017-01-09 09:30:26'
       , likes: 1
     }
   },
@@ -26,8 +26,8 @@ export const items = [
     , desc: 'Post description 2'
     , meta: {
       author: 'Ivan'
-      , createdAt: 'December 13, 2014 11:13:00'
-      , updatedAt: 'January 13, 2015 11:13:00'
+      , createdAt: '2017-03-08 09:30:26'
+      , updatedAt: '2017-03-09 09:30:26'
       , likes: 2
     }
   },
@@ -42,8 +42,8 @@ export const items = [
     , desc: 'Post description 3'
     , meta: {
       author: 'Dima'
-      , createdAt: 'September 13, 2014 11:13:00'
-      , updatedAt: 'November 13, 2014 11:13:00'
+      , createdAt: '2017-02-08 09:30:26'
+      , updatedAt: '2017-02-09 09:30:26'
       , likes: 3
     }
   }
