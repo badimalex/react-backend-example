@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import { CardImg } from 'reactstrap';
+import { Image as ImageComponent } from 'semantic-ui-react';
 
 const Image = ({src, width, height, alt}) => (
-  <CardImg top width={width} height={height} src={src} alt={alt} />
+  <ImageComponent width={width} height={height} src={src} alt={alt} />
 );
 
 Image.propTypes = {

@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import { Row, Col } from 'reactstrap';
+import request from 'superagent';
 
-import { items as staticItems } from 'constants/static/items';
+import { Row, Col } from 'reactstrap';
 
 import BlogList from '../ui/BlogList';
 import BlogItem from '../ui/BlogItem';
@@ -11,8 +11,20 @@ import PieChart from '../ui/PieChart';
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: staticItems };
+    this.state = { items: [] };
     this.likeHandler = _.bind(this.likeHandler, this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://localhost:3001',
+      {},
+      (err, res) => this.setState({ items: res.body })
+    );
   }
 
   likeHandler(id) {
