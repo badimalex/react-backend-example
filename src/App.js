@@ -1,13 +1,11 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import { Container } from 'reactstrap';
 
-import BlogPage from './components/containers/BlogPage';
+import { Router, browserHistory } from 'react-router';
+
+import routes from 'routes';
 
 const App = () => (
-  <Container>
-    <BlogPage />
-  </Container>
+  <Router history={browserHistory} routes={routes} />
 );
 
 export default App;

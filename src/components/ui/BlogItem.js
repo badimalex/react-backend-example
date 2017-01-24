@@ -1,30 +1,30 @@
 import React, { PropTypes } from 'react';
-import { Card, CardBlock,
-        CardTitle, CardText } from 'reactstrap';
-
+import { Item } from 'semantic-ui-react';
 import moment from 'moment';
 
 import Image from './Image';
 import Like from './Like';
+import Link from './Link';
+import { postsPath } from 'helpers/routes';
 
-const BlogItem = ({image, title, desc, meta, likeHandler}) => (
-  <Card className='blog-item'>
+const BlogItem = ({id, image, title, desc, meta, likeHandler}) => (
+  <Item>
     <Image {...image} />
-    <CardBlock>
-      <CardTitle> { title } </CardTitle>
-      <CardText> { desc } </CardText>
-      <CardText>
-        <small className="text-muted">
-          {
-            `by ${meta.author},
-            on ${moment(meta.createdAt).format('L')},
-            updated ${moment(meta.updatedAt).format('L')}`
-          }
-        </small>
-      </CardText>
+    <Item.Content>
+      <Item.Header>
+        <Link to={postsPath(id)} >{title}</Link>
+      </Item.Header>
+      <Item.Description> { desc } </Item.Description>
+      <Item.Meta>
+        {
+          `by ${meta.author},
+          on ${moment(meta.createdAt).format('L')},
+          updated ${moment(meta.updatedAt).format('L')}`
+        }
+      </Item.Meta>
       <Like likes={meta.likes} likeHandler={ likeHandler } />
-    </CardBlock>
-  </Card>
+    </Item.Content>
+  </Item>
 );
 
 BlogItem.propTypes = {
