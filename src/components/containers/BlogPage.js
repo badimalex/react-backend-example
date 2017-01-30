@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import request from 'superagent';
 
-import { Row, Col } from 'reactstrap';
+import { Grid } from 'semantic-ui-react';
 
 import BlogList from '../ui/BlogList';
 import BlogItem from '../ui/BlogItem';
@@ -42,18 +42,16 @@ class BlogPage extends React.Component {
   render() {
     const { items } = this.state;
     return (
-      <div className="blog-page">
-        <Row>
-          <Col>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={12}>
             <BlogList items={items} likeHandler={ this.likeHandler } />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </Grid.Column>
+          <Grid.Column width={4}>
             <PieChart columns={this.getChartData()} />
-          </Col>
-        </Row>
-      </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }
