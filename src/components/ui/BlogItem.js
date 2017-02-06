@@ -28,6 +28,7 @@ const BlogItem = ({id, image, title, desc, meta, likeHandler}) => (
 );
 
 BlogItem.propTypes = {
+  id: PropTypes.number,
   image: PropTypes.shape(Image.propTypes),
   title: PropTypes.string,
   desc: PropTypes.string,

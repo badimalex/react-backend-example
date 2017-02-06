@@ -18,7 +18,7 @@ class Post extends React.Component {
   fetchPosts() {
     const params = this.props.params;
     request.get(
-      `http://localhost:3001/${params.id}`,
+      `http://localhost:3001/posts/${params.id}`,
       {},
       (err, res) => this.setState({ item: res.body })
     );
