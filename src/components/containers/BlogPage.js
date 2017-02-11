@@ -8,6 +8,7 @@ import BlogList from '../ui/BlogList';
 import BlogItem from '../ui/BlogItem';
 import PieChart from '../ui/PieChart';
 import Pagination from '../widgets/Pagination';
+import SearchForm from '../widgets/SearchForm';
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class BlogPage extends React.Component {
     this.state = {};
     this.likeHandler = _.bind(this.likeHandler, this);
     this.pageChangeHandler = _.bind(this.pageChangeHandler, this);
+    this.handleKeyDown = _.bind(this.handleKeyDown, this);
   }
 
   componentDidMount() {
@@ -26,21 +28,35 @@ class BlogPage extends React.Component {
     this.fetchPosts(page);
   }
 
+  handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      event.stopPropagation();
+      const value = event.currentTarget.value;
+      request.get(
+        'http://localhost:3001/posts',
+        {'q[title_cont]': value},
+        (err, res) => this.assignResponseAttributes(res)
+      );
+    }
+  }
+
+  assignResponseAttributes(response) {
+    const { posts, meta } = response.body;
+    this.setState({
+      items: posts,
+      currentPageNumber: meta.currentPageNumber,
+      totalItems: meta.totalItems,
+      itemsPerPage: meta.itemsPerPage,
+      totalPages: meta.totalPages
+    });
+  }
+
   fetchPosts(page = 1) {
-    const that = this;
     request.get(
       'http://localhost:3001/posts',
       { page },
-      function(err, res) {
-        const {posts, meta} = res.body;
-        that.setState({
-          items: posts,
-          currentPageNumber: meta.currentPageNumber,
-          totalItems: meta.totalItems,
-          itemsPerPage: meta.itemsPerPage,
-          totalPages: meta.totalPages
-        });
-      }
+      (err, res) => this.assignResponseAttributes(res)
     );
   }
 
@@ -75,6 +91,7 @@ class BlogPage extends React.Component {
             />
           </Grid.Column>
           <Grid.Column width={4}>
+            <SearchForm handleKeyDown={this.handleKeyDown} />
             <PieChart columns={this.getChartData()} />
           </Grid.Column>
         </Grid.Row>
