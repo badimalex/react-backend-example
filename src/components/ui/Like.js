@@ -1,9 +1,16 @@
 import React, { PropTypes } from 'react';
-import { Button } from 'reactstrap';
+import { Button } from 'semantic-ui-react';
 
 const Like = ({likes, likeHandler}) => (
   <div>
-    <Button outline color="success" onClick={likeHandler}>Like {likes}</Button>
+    <Button
+      size='mini'
+      color='blue'
+      content='Like'
+      icon='heart'
+      onClick={likeHandler}
+      label={{ basic: true, color: 'blue', pointing: 'left', content: likes }}
+    />
   </div>
 );
 
