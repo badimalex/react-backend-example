@@ -2,17 +2,8 @@ import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
 
 class Pagination extends Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props;
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.state = nextProps;
-  }
-
   render() {
-    const { totalItems, currentPageNumber, pageChangeHandler } = this.state;
+    const { totalItems, currentPageNumber, pageChangeHandler } = this.props;
 
     const items = [];
 
