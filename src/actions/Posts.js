@@ -16,12 +16,17 @@ const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
 
+export const likeEntry = id => ({
+  type: types.ADD_POST_LIKE,
+  id
+});
+
 export function fetchPosts() {
   return (dispatch) => {
     dispatch(requestPosts());
 
     return request
-      .get(`${API_ROOT}/`)
+      .get(`${API_ROOT}/posts`)
       .end((err, response) => {
         err ? dispatch(errorPosts()) :  dispatch(receivePosts(response.body));
       });

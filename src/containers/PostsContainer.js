@@ -1,11 +1,24 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as PostsActions from '../actions/Posts';
 
-import BlogList from 'components/ui/BlogList';
+import BlogPage from 'components/containers/BlogPage';
 
-const stateToProps = (state) => ({
+const mapStateToProps = state => ({
   items: state.posts.entries,
+  currentPageNumber: state.posts.currentPageNumber,
+  totalItems: state.posts.totalItems,
+  itemsPerPage: state.posts.itemsPerPage,
+  totalPages: state.posts.totalPages,
   isFetching: state.posts.isFetching,
-  error: state.posts.error
+  error: state.posts.error,
 });
 
-export default connect(stateToProps)(BlogList);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(PostsActions, dispatch)
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BlogPage);
