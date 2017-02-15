@@ -14,18 +14,13 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.likeHandler = _.bind(this.likeHandler, this);
     this.pageChangeHandler = _.bind(this.pageChangeHandler, this);
     this.handleKeyDown = _.bind(this.handleKeyDown, this);
   }
 
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
   pageChangeHandler(page) {
     this.setState({currentPageNumber: page});
-    this.fetchPosts(page);
+    // this.fetchPosts(page);
   }
 
   handleKeyDown(event) {
@@ -60,20 +55,14 @@ class BlogPage extends React.Component {
     );
   }
 
-  likeHandler(id) {
-    const { items } = this.state;
-    const item = _.find(items, (o) => o.id == id);
-    item.meta.likes += 1;
-    this.setState({ items });
-  }
-
   getChartData() {
-    const { items } = this.state;
+    const { items } = this.props;
     return _.map(items, (i) => [i.title, i.meta.likes]);
   }
 
   render() {
-    const { items, currentPageNumber, totalPages } = this.state;
+    const { items, currentPageNumber, totalPages } = this.props;
+    const { likeEntry } = this.props.actions;
 
     if (!items) {
       return <div>Loading</div>;
@@ -83,7 +72,7 @@ class BlogPage extends React.Component {
       <Grid>
         <Grid.Row>
           <Grid.Column width={12}>
-            <BlogList items={items} likeHandler={ this.likeHandler } />
+            <BlogList items={items} likeHandler={likeEntry} />
             <Pagination
                totalItems={totalPages}
                currentPageNumber={currentPageNumber}
@@ -102,6 +91,9 @@ class BlogPage extends React.Component {
 
 BlogPage.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
+  currentPageNumber: PropTypes.number,
+  totalPages: PropTypes.number,
+  actions: PropTypes.object.isRequired
 };
 
 export default BlogPage;
