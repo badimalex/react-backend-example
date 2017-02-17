@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import request from 'superagent';
 
 import { Grid } from 'semantic-ui-react';
 
@@ -19,40 +18,18 @@ class BlogPage extends React.Component {
   }
 
   pageChangeHandler(page) {
-    this.setState({currentPageNumber: page});
-    // this.fetchPosts(page);
+    const { fetchPosts } = this.props.actions;
+    fetchPosts(page);
   }
 
   handleKeyDown(event) {
+    const { searchRequest } = this.props.actions;
     if (event.keyCode === 13) {
       event.preventDefault();
       event.stopPropagation();
-      const value = event.currentTarget.value;
-      request.get(
-        'http://localhost:3001/posts',
-        {'q[title_cont]': value},
-        (err, res) => this.assignResponseAttributes(res)
-      );
+      const phrase = event.currentTarget.value;
+      searchRequest(phrase);
     }
-  }
-
-  assignResponseAttributes(response) {
-    const { posts, meta } = response.body;
-    this.setState({
-      items: posts,
-      currentPageNumber: meta.currentPageNumber,
-      totalItems: meta.totalItems,
-      itemsPerPage: meta.itemsPerPage,
-      totalPages: meta.totalPages
-    });
-  }
-
-  fetchPosts(page = 1) {
-    request.get(
-      'http://localhost:3001/posts',
-      { page },
-      (err, res) => this.assignResponseAttributes(res)
-    );
   }
 
   getChartData() {

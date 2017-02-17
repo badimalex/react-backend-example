@@ -22,8 +22,25 @@ const addLike = (entries, action) => {
   return entries;
 };
 
+const getResponseAttributes = (response) => {
+  const { posts, meta } = response;
+  return {
+    entries: posts,
+    currentPageNumber: meta.currentPageNumber,
+    totalItems: meta.totalItems,
+    itemsPerPage: meta.itemsPerPage,
+    totalPages: meta.totalPages
+  };
+};
+
 export default function(state = initialState, action) {
   switch (action.type) {
+    case types.SEARCH_POSTS_SUCCESS:
+      return assign(
+        {},
+        initialState,
+        getResponseAttributes(action.response)
+      );
     case types.ADD_POST_LIKE:
       return assign({}, state, { entries: addLike(state.entries, action) });
     case types.FETCH_POSTS_REQUEST:
@@ -34,14 +51,7 @@ export default function(state = initialState, action) {
       return assign(
         {},
         initialState,
-        {
-          entries: action.response.posts,
-          meta: action.response.meta,
-          currentPageNumber: action.response.meta.currentPageNumber,
-          totalItems: action.response.meta.totalItems,
-          itemsPerPage: action.response.meta.itemsPerPage,
-          totalPages: action.response.meta.totalPages
-        }
+        getResponseAttributes(action.response)
       );
     default:
       return state;

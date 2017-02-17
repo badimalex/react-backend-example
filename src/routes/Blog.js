@@ -5,10 +5,7 @@ import { postsPath } from 'helpers/routes';
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
 
-// import BlogPage from 'components/containers/BlogPage';
 import AboutPage from 'components/containers/AboutPage';
-// import Post from 'components/containers/Post';
-
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
 

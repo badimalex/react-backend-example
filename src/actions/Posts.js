@@ -12,6 +12,11 @@ const receivePosts = (response) => ({
   response
 });
 
+const searchPosts = (response) => ({
+  type: types.SEARCH_POSTS_SUCCESS,
+  response
+});
+
 const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
@@ -21,12 +26,30 @@ export const likeEntry = id => ({
   id
 });
 
-export function fetchPosts() {
+export function searchRequest(phrase) {
   return (dispatch) => {
     dispatch(requestPosts());
 
     return request
-      .get(`${API_ROOT}/posts`)
+      .get(
+        `${API_ROOT}/posts`,
+        {'q[title_cont]': phrase}
+      )
+      .end((err, response) => {
+        err ? dispatch(errorPosts()) :  dispatch(searchPosts(response.body));
+      });
+  };
+}
+
+export function fetchPosts(page = 1) {
+  return (dispatch) => {
+    dispatch(requestPosts());
+
+    return request
+      .get(
+        `${API_ROOT}/posts`,
+        { page }
+      )
       .end((err, response) => {
         err ? dispatch(errorPosts()) :  dispatch(receivePosts(response.body));
       });
