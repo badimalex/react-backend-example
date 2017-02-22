@@ -24,12 +24,11 @@ class BlogPage extends React.Component {
   }
 
   handleKeyDown(event) {
-    const { searchRequest } = this.props.actions;
     if (event.keyCode === 13) {
       event.preventDefault();
       event.stopPropagation();
       const phrase = event.currentTarget.value;
-      searchRequest(phrase);
+      browserHistory.push(`/search?q=${phrase}`);
     }
   }
 
