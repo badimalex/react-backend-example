@@ -14,7 +14,7 @@ const SearchForm = ({handleKeyDown}) => (
 );
 
 SearchForm.propTypes = {
-  handleKeyPress: PropTypes.func
+  handleKeyDown: PropTypes.func
 };
 
 export default SearchForm;
