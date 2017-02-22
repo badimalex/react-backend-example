@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import { browserHistory } from 'react-router';
+
 import _ from 'lodash';
 
 import { Grid } from 'semantic-ui-react';
@@ -18,8 +20,7 @@ class BlogPage extends React.Component {
   }
 
   pageChangeHandler(page) {
-    const { fetchPosts } = this.props.actions;
-    fetchPosts(page);
+    browserHistory.push(`/page/${page}`);
   }
 
   handleKeyDown(event) {

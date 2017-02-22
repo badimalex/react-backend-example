@@ -30,11 +30,20 @@ const PostRoute = {
   }
 };
 
+const PaginationRoute = {
+  path: '/page/:page',
+  component: PostsContainer,
+  prepareData: (store, query, params) => {
+    store.dispatch(fetchPosts(params.page));
+  }
+};
+
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
     PostRoute,
+    PaginationRoute,
     About
   ]
 };
