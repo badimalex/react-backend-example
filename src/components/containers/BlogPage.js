@@ -32,11 +32,6 @@ class BlogPage extends React.Component {
     }
   }
 
-  getChartData() {
-    const { items } = this.props;
-    return _.map(items, (i) => [i.title, i.meta.likes]);
-  }
-
   render() {
     const { items, currentPageNumber, totalPages } = this.props;
     const { likeEntry } = this.props.actions;
@@ -58,7 +53,7 @@ class BlogPage extends React.Component {
           </Grid.Column>
           <Grid.Column width={4}>
             <SearchForm handleKeyDown={this.handleKeyDown} />
-            <PieChart columns={this.getChartData()} />
+            <PieChart items={items} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
