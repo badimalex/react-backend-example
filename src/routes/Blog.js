@@ -2,7 +2,7 @@ import MainLayout from 'components/layouts/MainLayout';
 
 import { postsPath } from 'helpers/routes';
 
-import { fetchPosts } from 'actions/Posts';
+import { fetchPosts, searchRequest } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
 
 import AboutPage from 'components/containers/AboutPage';
@@ -38,12 +38,21 @@ const PaginationRoute = {
   }
 };
 
+const SearchRoute = {
+  path: '/search',
+  component: PostsContainer,
+  prepareData: (store, query) => {
+    store.dispatch(searchRequest(query.q));
+  }
+};
+
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
     PostRoute,
     PaginationRoute,
+    SearchRoute,
     About
   ]
 };
