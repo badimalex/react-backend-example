@@ -19,6 +19,7 @@ class BlogPage extends React.Component {
     this.handleKeyDown = _.bind(this.handleKeyDown, this);
   }
 
+  //TODO move to a PostsContainer
   pageChangeHandler(page) {
     browserHistory.push(`/page/${page}`);
   }
