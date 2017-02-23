@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as PostsActions from '../actions/Posts';
+import { browserHistory } from 'react-router';
 
 import BlogPage from 'components/containers/BlogPage';
 
@@ -18,7 +19,26 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(PostsActions, dispatch)
 });
 
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  return Object.assign({}, ownProps, {
+    pageChangeHandler: (page) => {
+      browserHistory.push(`/page/${page}`);
+    },
+    handleKeyDown(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        event.stopPropagation();
+        const phrase = event.currentTarget.value;
+        browserHistory.push(`/search?q=${phrase}`);
+      }
+    },
+    ...dispatchProps,
+    ...stateProps
+  });
+};
+
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(BlogPage);
