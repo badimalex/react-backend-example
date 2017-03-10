@@ -1,4 +1,4 @@
-import { assign, map } from 'lodash';
+import { assign, map, cloneDeep } from 'lodash';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
@@ -12,24 +12,24 @@ const initialState = {
   totalPages: null,
 };
 
-const addLike = (entries, action) => {
-  entries = map(entries, function(entry) {
-    if (entry.id == action.id) {
-      entry.meta.likes += 1;
-    }
-    return entry;
-  });
-  return entries;
+const addLike = (entries, entry) => {
+  const entriesClone = cloneDeep(entries);
+  const { id, meta } = entry;
+
+  entriesClone.find(item => item.id === id)
+    .meta = meta;
+
+  return entriesClone;
 };
 
 const getResponseAttributes = (response) => {
   const { posts, meta } = response;
   return {
     entries: posts,
-    currentPageNumber: meta.currentPageNumber,
-    totalItems: meta.totalItems,
-    itemsPerPage: meta.itemsPerPage,
-    totalPages: meta.totalPages
+    currentPageNumber: meta.current_page,
+    totalItems: meta.total_count,
+    itemsPerPage: meta.per_page,
+    totalPages: meta.total_pages
   };
 };
 
@@ -41,8 +41,10 @@ export default function(state = initialState, action) {
         initialState,
         getResponseAttributes(action.response)
       );
-    case types.ADD_POST_LIKE:
-      return assign({}, state, { entries: addLike(state.entries, action) });
+    case types.POST_LIKE_SUCCESS:
+      return assign({}, state, {
+        entries: addLike(state.entries, action.response.post)
+      });
     case types.FETCH_POSTS_REQUEST:
       return assign({}, initialState, { isFetching: true });
     case types.FETCH_POSTS_ERROR:
