@@ -28,7 +28,7 @@ const BlogItem = ({id, image, title, description, meta, likeHandler}) => (
 
 BlogItem.propTypes = {
   id: PropTypes.number,
-  image: PropTypes.shape(Image.propTypes),
+  image: PropTypes.object,
   title: PropTypes.string,
   description: PropTypes.string,
   meta: PropTypes.object,

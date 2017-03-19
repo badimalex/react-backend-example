@@ -1,5 +1,6 @@
 import MainLayout from 'components/layouts/MainLayout';
 
+import initialLoad from 'helpers/initialLoad';
 import { postsPath } from 'helpers/routes';
 
 import { fetchPosts, searchRequest } from 'actions/Posts';
@@ -13,7 +14,8 @@ const Index = {
   path: '/',
   component: PostsContainer,
   prepareData: (store) => {
-    store.dispatch(fetchPosts());
+    if (initialLoad()) return;
+    return store.dispatch(fetchPosts());
   }
 };
 
@@ -26,7 +28,7 @@ const PostRoute = {
   path: postsPath(),
   component: PostContainer,
   prepareData: (store, query, params) => {
-    store.dispatch(fetchPost(params.id));
+    return store.dispatch(fetchPost(params.id));
   }
 };
 
@@ -34,7 +36,7 @@ const PaginationRoute = {
   path: '/page/:page',
   component: PostsContainer,
   prepareData: (store, query, params) => {
-    store.dispatch(fetchPosts(params.page));
+    return store.dispatch(fetchPosts(params.page));
   }
 };
 
@@ -42,7 +44,7 @@ const SearchRoute = {
   path: '/search',
   component: PostsContainer,
   prepareData: (store, query) => {
-    store.dispatch(searchRequest(query.q));
+    return store.dispatch(searchRequest(query.q));
   }
 };
 
