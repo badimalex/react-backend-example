@@ -4,9 +4,12 @@ import { Item } from 'semantic-ui-react';
 
 import BlogItem from '../ui/BlogItem';
 
+import Helmet from 'react-helmet';
+
 const Post = ({ item }) => (
     <Item.Group>
       {item && <BlogItem {...item} />}
+      {item && <Helmet title={item.title} /> }
     </Item.Group>
 );
 
