@@ -7,6 +7,7 @@ import BlogItem from '../ui/BlogItem';
 import PieChart from '../ui/PieChart';
 import Pagination from '../widgets/Pagination';
 import SearchForm from '../widgets/SearchForm';
+import Helmet from 'react-helmet';
 
 const BlogPage = ({
   items, currentPageNumber, totalPages,
@@ -27,6 +28,12 @@ const BlogPage = ({
         <PieChart items={items} />
       </Grid.Column>
     </Grid.Row>
+    <Helmet title='Posts list'
+      meta={[
+        { name: 'description', content: 'React application' },
+        { name: 'keywords', content: 'thinknetica, react' },
+      ]}
+    />
   </Grid>
 );
 
