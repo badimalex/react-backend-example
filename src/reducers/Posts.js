@@ -1,4 +1,4 @@
-import { assign, map, cloneDeep } from 'lodash';
+import { assign, cloneDeep } from 'lodash';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
