@@ -1,63 +1,87 @@
 import React from 'react';
 
-import { mapValues, assign } from 'lodash/object';
-
-import classNames from 'classnames';
+import className from 'classnames';
+import { set, assign } from 'lodash/object';
 
 class AboutPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { errors: {} };
-    this.form = {};
+    this.state = {
+      form: {
+        values: {
+          fullName: '',
+          email: '',
+          message: ''
+        },
+        errors: {}
+      }
+    };
+
     this.onSubmit = this.onSubmit.bind(this);
-    this.generateRef = this.generateRef.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const values = mapValues(this.form, 'value');
-
-    this.setState({ errors: {} });
-
-    if (!values.email || values.email.length < 3)
-      this.setState(assign(
-        {},
-        this.state,
-        { errors: assign({}, this.state.errors, { email: true }) }
-      ));
-
-    alert(JSON.stringify(values));
+    alert(JSON.stringify(this.state.form.values));
   }
 
-  generateRef(fieldName) {
-    return (input) => { this.form[fieldName] = input; };
+  clearError(fieldName) {
+    this.setState(set(
+      assign({}, this.state),
+      ['form', 'errors', fieldName],
+      false
+    ));
+  }
+
+  handleChange(fieldName) {
+    return (e) => {
+      switch (fieldName) {
+        case 'email':
+          this.clearError('email');
+          if (e.target.value.length < 3)
+            this.setState(set(
+              assign({}, this.state),
+              'form.errors.email',
+              true
+            ));
+          break;
+      }
+
+      this.setState(
+        set(
+          assign({}, this.state),
+          ['form', 'values', fieldName],
+          e.target.value
+        ));
+    };
   }
 
   render() {
+    const { fullName, email, message } = this.state.form.values;
     return (
       <div>
-        <form className="ui form" onSubmit={this.onSubmit}>
+        <h1>Contacts</h1>
+        <form onSubmit={this.onSubmit} className="ui form">
           <Text
-            label="Full name"
             name="fullName"
-            fieldRef={this.generateRef('fullName')}
+            label="Full name"
+            value={fullName}
+            onChange={this.handleChange('fullName')}
           />
           <Text
-            label="Email"
             name="email"
-            error={this.state.errors.email}
-            fieldRef={this.generateRef('email')}
+            label="Email"
+            value={email}
+            error={this.state.form.errors.email}
+            onChange={this.handleChange('email')}
           />
           <TextArea
-            label="Message"
             name="message"
-            fieldRef={this.generateRef('message')}
+            label="Message"
+            value={message}
+            onChange={this.handleChange('message')}
           />
-          <input
-            className="ui button primary"
-            type="submit"
-            value="Submit"
-          />
+          <input type="submit" value="Submit" className="ui button primary" />
         </form>
       </div>
     );
@@ -66,39 +90,29 @@ class AboutPage extends React.Component {
 
 export default AboutPage;
 
-class Text extends React.Component {
-  render() {
-    const { label, name, fieldRef, error } = this.props;
+const Text = ({ name, value, onChange, label, error }) => (
+  <div className={className('ui field', { error })}>
+    <label htmlFor={name}>{label}:</label>
+    <input
+      name={name}
+      id={name}
+      className="ui input"
+      type="text"
+      value={value}
+      onChange={onChange}
+    />
+  </div>
+);
 
-    return (
-      <div className={classNames('ui field', { error })} >
-        <label htmlFor={name}>{label}:</label>
-        <input
-          type="text"
-          ref={fieldRef}
-          className="ui input"
-          name={name}
-          id={name}
-        />
-      </div>
-    );
-  }
-}
-
-class TextArea extends React.Component {
-  render() {
-    const { label, name, fieldRef } = this.props;
-
-    return (
-      <div className="ui field" >
-        <label htmlFor={name}>{label}:</label>
-        <textarea
-          ref={fieldRef}
-          className="ui input"
-          name={name}
-          id={name}
-        />
-      </div>
-    );
-  }
-}
+const TextArea = ({ name, value, onChange, label }) => (
+  <div className="ui field">
+    <label htmlFor={name}>{label}:</label>
+    <textarea
+      name={name}
+      id={name}
+      className="ui input"
+      value={value}
+      onChange={onChange}
+    />
+  </div>
+);
