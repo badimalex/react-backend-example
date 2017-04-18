@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
-import { Item } from 'semantic-ui-react';
+import { Item, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 
 import Like from './Like';
 import Link from './Link';
-import { postsPath } from 'helpers/routes';
+import { postsPath, editPostPath } from 'helpers/routes';
 
 const BlogItem = ({id, image, title, description, meta, likeHandler}) => (
   <Item>
@@ -12,6 +12,11 @@ const BlogItem = ({id, image, title, description, meta, likeHandler}) => (
     <Item.Content>
       <Item.Header>
         <Link to={postsPath(id)} >{title}</Link>
+        &nbsp;
+        <Link to={editPostPath(id)} >
+          <Icon name='edit' />
+        </Link>
+
       </Item.Header>
       <Item.Description> { description } </Item.Description>
       <Item.Meta>
