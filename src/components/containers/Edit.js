@@ -1,54 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import request from 'superagent';
-import moment from 'moment';
-import _ from 'lodash';
 const camelcaseKeys = require('camelcase-keys');
+import _ from 'lodash';
 
 import { API_ROOT } from 'constants/API';
-
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { connect } from 'react-redux';
 
-import classNames from 'classnames';
-
-import DateRangePickerWrapper from '../ui/DateRangePickerWrapper';
-
-
-class renderField extends React.Component {
-  getField(input, type) {
-    switch (type) {
-      case 'date':
-        return <DateRangePickerWrapper
-          initialDate={input.value ? moment(input.value) : null}
-          onDateChange={
-            (date) => {
-              input.onChange(moment(date).format('YYYY-MM-DD HH:mm:ss'));
-            }
-          } />;
-      case 'textarea':
-        return <textarea className="ui input" {...input} />;
-      default:
-        return <input className="ui input" type={type} {...input} />;
-    }
-  }
-
-  render() {
-    const { input, label, type, meta: { touched, error, warning} } = this.props;
-    return (
-      <div className={classNames('ui field', { error })}>
-        <label>{label}</label>
-        {
-          this.getField(input, type)
-        }
-        {touched && (error && (
-          <div className="ui red label">{error}</div>
-        ) || (warning && (
-          <div className="ui yellow label">{warning}</div>
-        )))}
-      </div>
-    );
-  }
-}
+import TextareaField from '../ui/form/TextareaField';
+import InputField from '../ui/form/InputField';
+import DateField from '../ui/form/DateField';
 
 const sendRequest = values => new Promise(function(resolve) {
   request
@@ -86,25 +47,25 @@ const EditPostView = ({ handleSubmit, pristine, submitting, reset }) => (
     <form onSubmit={handleSubmit} className="ui form">
       <Field
         label="Title"
-        component={renderField}
+        component={InputField}
         type="text"
         name="title"
       />
       <Field
         label="Description"
-        component={renderField}
+        component={TextareaField}
         type="textarea"
         name="description"
       />
       <Field
         label="Author"
-        component={renderField}
+        component={InputField}
         type="text"
         name="author"
       />
       <Field
         label="Created at"
-        component={renderField}
+        component={DateField}
         type="date"
         name="createdAt"
       />
