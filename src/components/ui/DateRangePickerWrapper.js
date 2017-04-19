@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import momentPropTypes from 'react-moment-proptypes';
 import moment from 'moment';
 import omit from 'lodash.omit';
 import { SingleDatePicker, SingleDatePickerShape } from 'react-dates';
@@ -8,7 +7,6 @@ import { HORIZONTAL_ORIENTATION, ANCHOR_LEFT } from './constants';
 
 const propTypes = {
   autoFocus: PropTypes.bool,
-  initialDate: momentPropTypes.momentObj,
 
   ...omit(SingleDatePickerShape, [
     'date',
@@ -82,7 +80,7 @@ class SingleDatePickerWrapper extends React.Component {
       <SingleDatePicker
         {...props}
         id="date_input"
-        date={date}
+        date={moment(date)}
         focused={focused}
         onDateChange={this.onDateChange}
         onFocusChange={this.onFocusChange}
