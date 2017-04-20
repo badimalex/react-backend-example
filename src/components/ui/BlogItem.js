@@ -4,16 +4,17 @@ import moment from 'moment';
 
 import Like from './Like';
 import Link from './Link';
-import { postsPath, editPostPath } from 'helpers/routes';
 
-const BlogItem = ({id, image, title, description, meta, likeHandler}) => (
+const BlogItem = ({
+  image, title, description, meta, likeHandler, postUrl, editUrl
+}) => (
   <Item>
     <Item.Image src={image.src} />
     <Item.Content>
       <Item.Header>
-        <Link to={postsPath(id)} >{title}</Link>
+        <Link to={postUrl} >{title}</Link>
         &nbsp;
-        <Link to={editPostPath(id)} >
+        <Link to={editUrl} >
           <Icon name='edit' />
         </Link>
 
@@ -32,10 +33,11 @@ const BlogItem = ({id, image, title, description, meta, likeHandler}) => (
 );
 
 BlogItem.propTypes = {
-  id: PropTypes.number,
   image: PropTypes.object,
   title: PropTypes.string,
   description: PropTypes.string,
+  postUrl: PropTypes.string,
+  editUrl: PropTypes.string,
   meta: PropTypes.object,
   likeHandler: PropTypes.func
 };

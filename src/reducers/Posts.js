@@ -1,6 +1,7 @@
-import { assign, cloneDeep } from 'lodash';
+import { map, assign, cloneDeep } from 'lodash';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
+import { postsPath, editPostPath } from 'helpers/routes';
 
 const initialState = {
   isFetching: false,
@@ -24,8 +25,14 @@ const addLike = (entries, entry) => {
 
 const getResponseAttributes = (response) => {
   const { posts, meta } = response;
+  const newPosts = map(posts, post => {
+    return assign({}, post, {
+      postUrl: postsPath(post.id),
+      editUrl: editPostPath(post.id)
+    });
+  });
   return {
-    entries: posts,
+    entries: newPosts,
     currentPageNumber: meta.current_page,
     totalItems: meta.total_count,
     itemsPerPage: meta.per_page,
