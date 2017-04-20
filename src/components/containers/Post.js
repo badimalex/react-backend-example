@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import { Item } from 'semantic-ui-react';
 
-import BlogItem from '../ui/BlogItem';
+import BlogItem from 'components/ui/BlogItem';
 
 import Helmet from 'react-helmet';
 
