@@ -1,18 +1,10 @@
 import React from 'react';
-import classNames from 'classnames';
+import FormField from 'components/ui/form/Field';
 
-const TextareaField = (
-  { input, label, type, meta: { touched, error, warning} }
-) => (
-  <div className={classNames('ui field', { error })}>
-    <label>{label}</label>
-    <textarea className="ui input" {...input} />
-    {touched && (error && (
-      <div className="ui red label">{error}</div>
-    ) || (warning && (
-      <div className="ui yellow label">{warning}</div>
-    )))}
-  </div>
+const TextareaField = (props) => (
+  <FormField { ...props }>
+    <textarea className="ui input" {...props.input} />
+  </FormField>
 );
 
 export default TextareaField;
