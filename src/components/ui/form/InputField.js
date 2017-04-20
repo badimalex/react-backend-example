@@ -1,18 +1,10 @@
 import React from 'react';
-import classNames from 'classnames';
+import FormField from 'components/ui/form/Field';
 
-const InputField = (
-  { input, label, type, meta: { touched, error, warning} }
-) => (
-  <div className={classNames('ui field', { error })}>
-    <label>{label}</label>
-    <input className="ui input" type={type} {...input} />
-    {touched && (error && (
-      <div className="ui red label">{error}</div>
-    ) || (warning && (
-      <div className="ui yellow label">{warning}</div>
-    )))}
-  </div>
+const InputField = (props) => (
+  <FormField { ...props }>
+    <input className="ui input" type={props.type} {...props.input} />
+  </FormField>
 );
 
 export default InputField;
