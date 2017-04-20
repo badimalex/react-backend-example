@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as PostsActions from '../actions/Posts';
+import * as PostsActions from 'actions/Posts';
 import { browserHistory } from 'react-router';
 
 import BlogPage from 'components/containers/BlogPage';

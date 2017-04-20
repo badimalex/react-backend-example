@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Menu } from 'semantic-ui-react';
 
-import Link from '../../ui/Link';
+import Link from 'components/ui/Link';
 
 import './MainMenu.css';
 

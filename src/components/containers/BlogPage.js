@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 
 import { Grid } from 'semantic-ui-react';
 
-import BlogList from '../ui/BlogList';
-import BlogItem from '../ui/BlogItem';
-import PieChart from '../ui/PieChart';
-import Pagination from '../widgets/Pagination';
-import SearchForm from '../widgets/SearchForm';
+import BlogList from 'components/ui/BlogList';
+import BlogItem from 'components/ui/BlogItem';
+import PieChart from 'components/ui/PieChart';
+import Pagination from 'components/widgets/Pagination';
+import SearchForm from 'components/widgets/SearchForm';
 import Helmet from 'react-helmet';
 
 const BlogPage = ({

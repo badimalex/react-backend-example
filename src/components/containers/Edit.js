@@ -7,9 +7,9 @@ import { API_ROOT } from 'constants/API';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
 
-import TextareaField from '../ui/form/TextareaField';
-import InputField from '../ui/form/InputField';
-import DateField from '../ui/form/DateField';
+import TextareaField from 'components/ui/form/TextareaField';
+import InputField from 'components/ui/form/InputField';
+import DateField from 'components/ui/form/DateField';
 
 const sendRequest = values => new Promise(function(resolve) {
   request
