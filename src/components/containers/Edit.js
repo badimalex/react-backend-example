@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { API_ROOT } from 'constants/API';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
-
+import { get } from 'lodash/object';
 import TextareaField from 'components/ui/form/TextareaField';
 import InputField from 'components/ui/form/InputField';
 import DateField from 'components/ui/form/DateField';
@@ -81,11 +81,11 @@ const EditPostView = ({ handleSubmit, pristine, submitting, reset }) => (
 export default connect(
   (state) => ({
     initialValues: {
-      id: state.post.entry.id,
-      title: state.post.entry.title,
-      createdAt: state.post.entry.meta.createdAt,
-      author: state.post.entry.meta.author,
-      description: state.post.entry.description,
+      id: get(state, 'post.entry.id'),
+      title: get(state, 'post.entry.title'),
+      createdAt: get(state, 'post.entry.meta.createdAt'),
+      author: get(state, 'post.entry.meta.author'),
+      description: get(state, 'post.entry.description')
     }
   })
 )(reduxForm({
