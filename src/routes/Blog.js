@@ -37,7 +37,6 @@ const EditPostRoute = {
   path: editPostPath(),
   component: EditPostContainer,
   prepareData: (store, query, params) => {
-    if (initialLoad()) return;
     return store.dispatch(fetchPost(params.id));
   }
 };

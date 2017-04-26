@@ -70,7 +70,6 @@ class SingleDatePickerWrapper extends React.Component {
 
   render() {
     const { focused, date } = this.state;
-
     const props = omit(this.props, [
       'autoFocus',
       'initialDate',
