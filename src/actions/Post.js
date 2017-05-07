@@ -16,3 +16,19 @@ export function fetchPost(id) {
     }
   };
 }
+
+export function addComment(item) {
+  const { id } = item;
+  return {
+    [API_CALL]: {
+      endpoint: `/posts/${id}/comments`,
+      method: 'POST',
+      query: { comment: item },
+      types: [
+        types.POST_COMMENT_REQUEST,
+        types.POST_COMMENT_SUCCESS,
+        types.POST_COMMENT_ERROR
+      ]
+    }
+  };
+}

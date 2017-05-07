@@ -1,16 +1,20 @@
 import React, { PropTypes } from 'react';
 
-import { Item } from 'semantic-ui-react';
-
-import BlogItem from 'components/ui/BlogItem';
+import ItemFull from 'components/ui/ItemFull';
 
 import Helmet from 'react-helmet';
 
-const Post = ({ item }) => (
-    <Item.Group>
-      {item && <BlogItem {...item} />}
-      {item && <Helmet title={item.title} /> }
-    </Item.Group>
+import { Grid } from 'semantic-ui-react';
+
+const Post = ({ item, actions }) => (
+  <Grid>
+  <Grid.Row columns={1}>
+      <Grid.Column>
+        {item && <ItemFull {...item}  addCommentHandler={actions.addComment} />}
+        {item && <Helmet title={item.title} /> }
+        </Grid.Column>
+    </Grid.Row>
+  </Grid>
 );
 
 Post.propTypes = {
