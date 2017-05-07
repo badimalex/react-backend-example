@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-
 import Post from 'components/containers/Post';
+import { bindActionCreators } from 'redux';
+import * as PostActions from 'actions/Post';
 
 const stateToProps = (state) => ({
   item: state.post.entry,
@@ -8,4 +9,11 @@ const stateToProps = (state) => ({
   error: state.post.error
 });
 
-export default connect(stateToProps)(Post);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(PostActions, dispatch)
+});
+
+export default connect(
+  stateToProps,
+  mapDispatchToProps
+)(Post);

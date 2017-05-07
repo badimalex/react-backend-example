@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import omit from 'lodash.omit';
 import { SingleDatePicker, SingleDatePickerShape } from 'react-dates';
-import { HORIZONTAL_ORIENTATION, ANCHOR_LEFT } from './constants';
+import { HORIZONTAL_ORIENTATION, ANCHOR_LEFT } from 'components/ui/constants';
 
 const propTypes = {
   autoFocus: PropTypes.bool,

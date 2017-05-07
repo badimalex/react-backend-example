@@ -4,7 +4,7 @@ import { Grid } from 'semantic-ui-react';
 
 import BlogList from 'components/ui/BlogList';
 import BlogItem from 'components/ui/BlogItem';
-import PieChart from 'components/ui/PieChart';
+import PieChart from 'components/widgets/PieChart';
 import Pagination from 'components/widgets/Pagination';
 import SearchForm from 'components/widgets/SearchForm';
 import Helmet from 'react-helmet';

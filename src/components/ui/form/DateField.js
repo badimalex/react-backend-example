@@ -1,5 +1,5 @@
 import React from 'react';
-import DateRangePickerWrapper from 'components/ui/DateRangePickerWrapper';
+import DateRangePickerWrapper from 'components/ui/form/DateRangePickerWrapper';
 import formatDate from 'helpers/formatDate';
 import FormField from 'components/ui/form/Field';
 
