@@ -1,7 +1,9 @@
 import { assign, cloneDeep } from 'lodash';
 
+import { postsPath, editPostPath } from 'helpers/routes';
 import * as types from 'constants/actionTypes/PostActionTypes';
 import { API_ROOT } from 'constants/API';
+
 
 const initialState = {
   isFetching: false,
@@ -19,6 +21,13 @@ const commentAdd = (post, comment) => {
   return postClone;
 };
 
+const getResponseAttributes = (post) => {
+  return assign({}, post, {
+    postUrl: postsPath(post.id),
+    editUrl: editPostPath(post.id)
+  });
+};
+
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_POST_REQUEST:
@@ -30,7 +39,11 @@ export default function(state = initialState, action) {
     case types.FETCH_POST_ERROR:
       return assign({}, initialState, { error: true });
     case types.FETCH_POST_SUCCESS:
-      return assign({}, initialState, { entry: action.response.post });
+      return assign(
+        {},
+        initialState,
+        { entry: getResponseAttributes(action.response.post) }
+      );
     default:
       return state;
   }

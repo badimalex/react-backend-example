@@ -32,3 +32,19 @@ export function addComment(item) {
     }
   };
 }
+
+export function updatePost(item) {
+  const { id } = item;
+  return {
+    [API_CALL]: {
+      endpoint: `/posts/${id}`,
+      method: 'PUT',
+      query: { post: item },
+      types: [
+        types.UPDATE_POST_REQUEST,
+        types.UPDATE_POST_SUCCESS,
+        types.UPDATE_POST_ERROR
+      ]
+    }
+  };
+}

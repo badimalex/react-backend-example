@@ -6,10 +6,10 @@ import { postsPath, editPostPath } from 'helpers/routes';
 import { fetchPosts, searchRequest } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
 
-import AboutPage from 'components/containers/AboutPage';
+import AboutPage from 'components/views/AboutPage';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
-import EditPostContainer from 'components/containers/Edit';
+import EditPostContainer from 'containers/PostEditContainer';
 
 const Index = {
   path: '/',

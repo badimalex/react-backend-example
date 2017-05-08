@@ -3,7 +3,7 @@ import { Item } from 'semantic-ui-react';
 
 import { map } from 'lodash';
 
-import BlogItem from './BlogItem';
+import BlogItem from './ItemShort';
 
 const BlogList = ({items, likeHandler}) => (
   <Item.Group>

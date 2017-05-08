@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Post from 'components/containers/Post';
+import Post from 'components/views/Post';
 import { bindActionCreators } from 'redux';
 import * as PostActions from 'actions/Post';
 
