@@ -1,7 +1,7 @@
 import React from 'react';
 import { map } from 'lodash';
 import { Comment, Header } from 'semantic-ui-react';
-import CommentForm from './CommentForm';
+import CommentForm from 'containers/CommentContainer';
 import formatDate from 'helpers/formatDate';
 
 const CommentExampleComment = ({ comments, addCommentHandler }) => (

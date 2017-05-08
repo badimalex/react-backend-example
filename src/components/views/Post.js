@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import ItemFull from 'components/ui/ItemFull';
+import ItemFull from 'components/widgets/blog/ItemFull';
 
 import Helmet from 'react-helmet';
 

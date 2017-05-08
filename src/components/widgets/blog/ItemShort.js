@@ -2,16 +2,14 @@ import React, { PropTypes } from 'react';
 import { Item, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 
-import CommentList from './CommentList';
-import Like from './Like';
-import Link from './Link';
+import Like from 'components/ui/Like';
+import Link from 'components/ui/Link';
 
-const ItemFull = ({
-  image, title, description, meta, comments,
-  likeHandler, postUrl, editUrl, addCommentHandler
+const BlogItem = ({
+  image, title, description, meta, likeHandler, postUrl, editUrl
 }) => (
   <Item>
-    <Item.Image src={image.src} className="post-image" />
+    <Item.Image src={image.src} />
     <Item.Content>
       <Item.Header>
         <Link to={postUrl} >{title}</Link>
@@ -31,20 +29,17 @@ const ItemFull = ({
       </Item.Meta>
       <Like likes={meta.likes} likeHandler={ likeHandler } />
     </Item.Content>
-    <CommentList comments={comments} addCommentHandler={ addCommentHandler }  />
   </Item>
 );
 
-ItemFull.propTypes = {
+BlogItem.propTypes = {
   image: PropTypes.object,
   title: PropTypes.string,
   description: PropTypes.string,
   postUrl: PropTypes.string,
   editUrl: PropTypes.string,
   meta: PropTypes.object,
-  comments: PropTypes.array,
-  likeHandler: PropTypes.func,
-  addCommentHandler: PropTypes.func,
+  likeHandler: PropTypes.func
 };
 
-export default ItemFull;
+export default BlogItem;

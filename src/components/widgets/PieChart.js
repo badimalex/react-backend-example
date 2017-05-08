@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import 'c3/c3.css';
-import BlogItem from 'components/ui/BlogItem';
+import BlogItem from 'components/widgets/blog/ItemShort';
 
 class PieChart extends React.Component {
   componentDidMount() {

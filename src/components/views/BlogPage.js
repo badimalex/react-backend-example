@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 
 import { Grid } from 'semantic-ui-react';
 
-import BlogList from 'components/ui/BlogList';
-import BlogItem from 'components/ui/BlogItem';
+import BlogList from 'components/widgets/blog/List';
+import BlogItem from 'components/widgets/blog/ItemShort';
 import PieChart from 'components/widgets/PieChart';
 import Pagination from 'components/widgets/Pagination';
 import SearchForm from 'components/widgets/SearchForm';
