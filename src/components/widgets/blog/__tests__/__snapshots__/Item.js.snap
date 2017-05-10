@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item render should render usual item 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Item>
+    <ItemImage
+        src="/images/google.png"
+    />
+    <ItemContent>
+        <ItemHeader>
+            <Link
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/posts/5"
+            >
+                hello
+            </Link>
+             
+            <Link
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to={undefined}
+            >
+                <Icon
+                    as="i"
+                    name="edit"
+                />
+            </Link>
+        </ItemHeader>
+        <ItemDescription>
+             
+             
+        </ItemDescription>
+        <ItemMeta>
+            by undefined,
+                      on 05/10/2017,
+                      updated 05/10/2017
+        </ItemMeta>
+        <Like
+            likeHandler={undefined}
+            likes={undefined}
+        />
+    </ItemContent>
+</Item>,
+  "nodes": Array [
+    <Item>
+      <ItemImage
+            src="/images/google.png"
+      />
+      <ItemContent>
+            <ItemHeader>
+                  <Link
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="/posts/5"
+                  >
+                        hello
+                  </Link>
+                   
+                  <Link
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to={undefined}
+                  >
+                        <Icon
+                              as="i"
+                              name="edit"
+                        />
+                  </Link>
+            </ItemHeader>
+            <ItemDescription>
+                   
+                   
+            </ItemDescription>
+            <ItemMeta>
+                  by undefined,
+                            on 05/10/2017,
+                            updated 05/10/2017
+            </ItemMeta>
+            <Like
+                  likeHandler={undefined}
+                  likes={undefined}
+            />
+      </ItemContent>
+</Item>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <BlogItem
+        image={
+                Object {
+                        "src": "/images/google.png",
+                      }
+        }
+        postUrl="/posts/5"
+        title="hello"
+/>,
+      "_debugID": 38,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "image": Object {
+            "src": "/images/google.png",
+          },
+          "postUrl": "/posts/5",
+          "title": "hello",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Item>
+          <ItemImage
+                    src="/images/google.png"
+          />
+          <ItemContent>
+                    <ItemHeader>
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to="/posts/5"
+                              >
+                                        hello
+                              </Link>
+                               
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to={undefined}
+                              >
+                                        <Icon
+                                                  as="i"
+                                                  name="edit"
+                                        />
+                              </Link>
+                    </ItemHeader>
+                    <ItemDescription>
+                               
+                               
+                    </ItemDescription>
+                    <ItemMeta>
+                              by undefined,
+                                        on 05/10/2017,
+                                        updated 05/10/2017
+                    </ItemMeta>
+                    <Like
+                              likeHandler={undefined}
+                              likes={undefined}
+                    />
+          </ItemContent>
+</Item>,
+        "_debugID": 39,
+        "_renderedOutput": <Item>
+          <ItemImage
+                    src="/images/google.png"
+          />
+          <ItemContent>
+                    <ItemHeader>
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to="/posts/5"
+                              >
+                                        hello
+                              </Link>
+                               
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to={undefined}
+                              >
+                                        <Icon
+                                                  as="i"
+                                                  name="edit"
+                                        />
+                              </Link>
+                    </ItemHeader>
+                    <ItemDescription>
+                               
+                               
+                    </ItemDescription>
+                    <ItemMeta>
+                              by undefined,
+                                        on 05/10/2017,
+                                        updated 05/10/2017
+                    </ItemMeta>
+                    <Like
+                              likeHandler={undefined}
+                              likes={undefined}
+                    />
+          </ItemContent>
+</Item>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <BlogItem
+    image={
+        Object {
+            "src": "/images/google.png",
+          }
+    }
+    postUrl="/posts/5"
+    title="hello"
+/>,
+}
+`;

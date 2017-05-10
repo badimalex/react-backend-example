@@ -1,7 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Item, Icon } from 'semantic-ui-react';
 import moment from 'moment';
-
+import { get } from 'lodash';
 import Like from 'components/ui/Like';
 import Link from 'components/ui/Link';
 
@@ -9,7 +11,7 @@ const BlogItem = ({
   image, title, description, meta, likeHandler, postUrl, editUrl
 }) => (
   <Item>
-    <Item.Image src={image.src} />
+    <Item.Image {...image} />
     <Item.Content>
       <Item.Header>
         <Link to={postUrl} >{title}</Link>
@@ -22,12 +24,12 @@ const BlogItem = ({
       <Item.Description> { description } </Item.Description>
       <Item.Meta>
         {
-          `by ${meta.author},
-          on ${moment(meta.createdAt).format('L')},
-          updated ${moment(meta.updatedAt).format('L')}`
+          `by ${get(meta, 'author')},
+          on ${moment(get(meta,'createdAt')).format('L')},
+          updated ${moment(get(meta,'updatedAt')).format('L')}`
         }
       </Item.Meta>
-      <Like likes={meta.likes} likeHandler={ likeHandler } />
+      <Like likes={get(meta,'likes')} likeHandler={ likeHandler } />
     </Item.Content>
   </Item>
 );

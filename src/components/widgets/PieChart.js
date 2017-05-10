@@ -1,6 +1,8 @@
 /* global __CLIENT__ */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import 'c3/c3.css';

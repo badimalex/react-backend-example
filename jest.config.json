@@ -1,0 +1,10 @@
+{
+  "moduleFileExtensions": ["js"],
+  "setupFile": ["<rootDir>/utils/before_test.js"],
+  "modulePaths": [
+    "<rootDir>/src"
+  ],
+  "unmockedModulePathPatterns": [
+    "<rootDir>/node_modules/"
+  ]
+}

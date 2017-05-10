@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Item, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 
