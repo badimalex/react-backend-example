@@ -25,14 +25,15 @@
     "react-addons-transition-group": "^15.4.2",
     "react-dates": "^10.1.1",
     "react-dom": "^15.5.4",
-    "react-helmet": "^4.0.0",
+    "react-helmet": "^5.0.3",
     "react-redux": "^5.0.4",
     "react-router": "^3.0.5",
     "reactstrap": "^3.9.5",
     "redux": "^3.6.0",
     "redux-form": "^6.7.0",
     "redux-thunk": "^2.2.0",
-    "semantic-ui-react": "^0.64.3",
+    "semantic-ui-css": "^2.2.10",
+    "semantic-ui-react": "^0.68.3",
     "superagent": "^3.3.2",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1"
@@ -65,7 +66,7 @@
     "semantic-ui": "^2.2.7",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
