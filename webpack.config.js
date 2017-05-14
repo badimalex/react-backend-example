@@ -3,8 +3,6 @@
 import path from 'path';
 import webpack from 'webpack';
 
-const root = path.join(process.cwd(), 'src');
-
 export default {
   devtool: 'source-map',
 
@@ -21,11 +19,13 @@ export default {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+        }
       },
       {
         test: /\.css$/,
@@ -39,7 +39,10 @@ export default {
   },
 
   resolve: {
-    root: root
+     modules: [
+       path.join(__dirname, "src"),
+       "node_modules"
+     ]
   },
 
   plugins: [
