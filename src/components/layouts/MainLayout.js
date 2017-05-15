@@ -10,7 +10,7 @@ import MainMenu from './elements/MainMenu';
 const MainLayout = ({ children }) => (
   <Container>
     <MainMenu />
-    <GoBackButton />
+     {location.pathname != '/' ? <GoBackButton /> : ''}
     {children}
     <Footer />
   </Container>
