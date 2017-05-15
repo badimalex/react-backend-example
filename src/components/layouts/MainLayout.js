@@ -7,7 +7,7 @@ import history from 'helpers/history';
 
 import MainMenu from './elements/MainMenu';
 
-const MainLayout = ({ children }) => (
+const MainLayout = ({ children, location }) => (
   <Container>
     <MainMenu />
      {location.pathname != '/' ? <GoBackButton /> : ''}

@@ -25,9 +25,24 @@ export function addComment(item) {
       method: 'POST',
       query: { comment: item },
       types: [
-        types.POST_COMMENT_REQUEST,
-        types.POST_COMMENT_SUCCESS,
-        types.POST_COMMENT_ERROR
+        types.ADD_COMMENT_REQUEST,
+        types.ADD_COMMENT_SUCCESS,
+        types.ADD_COMMENT_ERROR
+      ]
+    }
+  };
+}
+
+export function addPost(item) {
+  return {
+    [API_CALL]: {
+      endpoint: '/posts',
+      method: 'POST',
+      query: { post: item },
+      types: [
+        types.ADD_POST_REQUEST,
+        types.ADD_POST_SUCCESS,
+        types.ADD_POST_ERROR
       ]
     }
   };

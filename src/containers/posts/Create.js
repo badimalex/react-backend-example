@@ -2,38 +2,28 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import * as PostActions from 'actions/Post';
+import PostForm from 'components/views/posts/Create';
 import { browserHistory } from 'react-router';
-import EditPostView from 'components/views/Edit';
 import formErrors from 'helpers/formErrors';
-
-const stateToProps = (state) => ({
-  initialValues: state.post.entry && {
-    id: state.post.entry.id,
-    title: state.post.entry.title,
-    createdAt: state.post.entry.meta.createdAt,
-    author: state.post.entry.meta.author,
-    description: state.post.entry.description
-  }
-});
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(PostActions, dispatch)
 });
 
 export default connect(
-  stateToProps,
+  null,
   mapDispatchToProps
 )(reduxForm({
   enableReinitialize: true,
-  form: 'editPost',
+  form: 'createPost',
   onSubmit: (values, dispatch, props) => {
-    const { updatePost } = props.actions;
-    return updatePost(values)
-      .then((data) => {
-        browserHistory.push(`/posts/${data.post.id}`);
+    const { addPost } = props.actions;
+    return addPost(values)
+      .then(() => {
+        browserHistory.push('/');
       })
       .catch((data) => {
         formErrors(data.body);
       });
   }
-})(EditPostView));
+})(PostForm));
