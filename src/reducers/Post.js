@@ -32,7 +32,7 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_POST_REQUEST:
       return assign({}, initialState, { isFetching: true });
-    case types.POST_COMMENT_SUCCESS:
+    case types.ADD_COMMENT_SUCCESS:
       return assign({}, state, {
         entry: commentAdd(state.entry, action.response)
       });

@@ -6,10 +6,11 @@ import { postsPath, editPostPath } from 'helpers/routes';
 import { fetchPosts, searchRequest } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
 
-import AboutPage from 'components/views/AboutPage';
-import PostsContainer from 'containers/PostsContainer';
-import PostContainer from 'containers/PostContainer';
-import EditPostContainer from 'containers/PostEditContainer';
+import AboutPage from 'components/views/pages/About';
+import PostsContainer from 'containers/posts/List';
+import PostContainer from 'containers/posts/Item';
+import EditPostContainer from 'containers/posts/Edit';
+import NewPostContainer from 'containers/posts/Create';
 
 const Index = {
   path: '/',
@@ -57,9 +58,15 @@ const SearchRoute = {
   }
 };
 
+const NewPost = {
+  path: '/posts/new',
+  component: NewPostContainer
+};
+
 export default {
   component: MainLayout,
   childRoutes: [
+    NewPost,
     Index,
     PostRoute,
     EditPostRoute,
