@@ -7,6 +7,8 @@ import BlogItem from 'components/widgets/blog/ItemShort';
 import PieChart from 'components/widgets/PieChart';
 import Pagination from 'components/widgets/Pagination';
 import SearchForm from 'components/widgets/SearchForm';
+import RightNavigation from 'components/layouts/elements/RightNavigation';
+
 import Helmet from 'react-helmet';
 
 const BlogPage = ({
@@ -24,6 +26,7 @@ const BlogPage = ({
         />
       </Grid.Column>
       <Grid.Column width={4}>
+        <RightNavigation />
         <SearchForm handleKeyDown={handleKeyDown} />
         <PieChart items={items} />
       </Grid.Column>

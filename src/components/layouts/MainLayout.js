@@ -10,14 +10,15 @@ import MainMenu from './elements/MainMenu';
 const MainLayout = ({ children, location }) => (
   <Container>
     <MainMenu />
-     {location.pathname != '/' ? <GoBackButton /> : ''}
+     { location.pathname == '/' ? '' : <GoBackButton /> }
     {children}
     <Footer />
   </Container>
 );
 
 MainLayout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  location: PropTypes.string
 };
 
 export default MainLayout;
