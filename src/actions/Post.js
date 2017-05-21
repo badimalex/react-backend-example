@@ -1,6 +1,7 @@
 import * as types from 'constants/actionTypes/PostActionTypes';
-
 import { API_CALL } from 'middleware/API';
+
+import { pick, mapValues } from 'lodash/object';
 
 export function fetchPost(id) {
   return {
@@ -21,7 +22,7 @@ export function addComment(item) {
   const { id } = item;
   return {
     [API_CALL]: {
-      endpoint: `/posts/${id}/comments`,
+      endpoint: `posts/${id}/comments`,
       method: 'POST',
       query: { comment: item },
       types: [
@@ -34,11 +35,18 @@ export function addComment(item) {
 }
 
 export function addPost(item) {
+  const cleanItem = pick(item, ['title', 'description', 'author']);
+  const files = mapValues(item.images, (image) => { return image; });
+
   return {
     [API_CALL]: {
-      endpoint: '/posts',
+      endpoint: 'posts',
       method: 'POST',
-      query: { post: item },
+      query: { post: cleanItem },
+      attachment: {
+        key: 'files[]',
+        files
+      },
       types: [
         types.ADD_POST_REQUEST,
         types.ADD_POST_SUCCESS,
@@ -52,7 +60,7 @@ export function updatePost(item) {
   const { id } = item;
   return {
     [API_CALL]: {
-      endpoint: `/posts/${id}`,
+      endpoint: `posts/${id}`,
       method: 'PUT',
       query: { post: item },
       types: [
