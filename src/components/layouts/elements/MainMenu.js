@@ -21,13 +21,6 @@ const MainMenu = () => (
     >
       About
     </Menu.Item>
-    <Menu.Item
-      as={Link}
-      to='/posts/new'
-      activeClassName="active"
-    >
-      Add post
-    </Menu.Item>
   </Menu>
 );
 
