@@ -25,6 +25,7 @@
     "react-addons-transition-group": "^15.4.2",
     "react-dates": "^10.1.1",
     "react-dom": "^15.5.4",
+    "react-dropzone": "^3.13.1",
     "react-helmet": "^5.0.3",
     "react-redux": "^5.0.4",
     "react-router": "^3.0.5",

@@ -1,14 +1,21 @@
 import request from 'superagent';
 
 import { assign, pick } from 'lodash/object';
+import { each } from 'lodash/collection';
 
 import { stringify } from 'qs';
 
 import { API_ROOT } from 'constants/API';
 
-function APICall({ endpoint, method, query, payload }) {
+function APICall({ endpoint, method, query, payload, attachment = false }) {
   return new Promise((resolve, reject) => {
     let r = request[method.toLowerCase()](`${API_ROOT}${endpoint}`);
+
+    if(attachment) {
+      each(attachment.files, (obj) => {
+        r.attach(attachment.key, obj);
+      });
+    }
 
     if(query)
       r.query(stringify(query));
@@ -38,7 +45,7 @@ export default store => next => action => {
   next(nextAction(action, { type: requestType }));
 
   const promise = APICall(
-    pick(action[API_CALL], ['endpoint', 'method', 'query', 'payload'])
+    pick(action[API_CALL], ['endpoint', 'method', 'query', 'payload', 'attachment'])
   );
 
   promise.then(
