@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Item, List, Icon, Header, Divider, Image, Container, Segment, Button } from 'semantic-ui-react';
+import {
+  Item, List, Icon, Header,
+  Divider, Image, Container
+} from 'semantic-ui-react';
+
 import moment from 'moment';
 
 import CommentList from 'components/widgets/blog/comment/List';
@@ -11,7 +15,7 @@ import FilesTree from 'components/widgets/FilesTree';
 
 const ItemFull = ({
   image, title, description, meta, comments,
-  likeHandler, postUrl, editUrl, addCommentHandler, files
+  likeHandler, editUrl, addCommentHandler, files
 }) => (
   <Container text>
     <Item.Content>
@@ -40,25 +44,14 @@ const ItemFull = ({
           </List.Item>
         </List>
       </Item.Extra>
-      <CommentList comments={comments} addCommentHandler={ addCommentHandler }  />
+      <CommentList
+        comments={comments}
+        addCommentHandler={ addCommentHandler }
+      />
     </Item.Content>
   </Container>
 );
-// <Item.Header as='h2'> {title} </Item.Header>
 
-// <Item.Image src={image.src} className="post-image" size='medium' />
-//
-// <Link to={editUrl} >
-//   <Icon name='edit' />
-// <Item.Description> { description } </Item.Description>
-// </Link>
-// <Item>
-//
-//   <Item.Content>
-    // <Like likes={meta.likes} likeHandler={ likeHandler } />
-//   </Item.Content>
-// </Item>
-// <CommentList comments={comments} addCommentHandler={ addCommentHandler }  />
 ItemFull.propTypes = {
   image: PropTypes.object,
   files: PropTypes.array,
