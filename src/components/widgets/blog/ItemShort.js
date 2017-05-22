@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Truncate from 'react-truncate';
 
 import { Item, Icon } from 'semantic-ui-react';
 import moment from 'moment';
@@ -13,15 +14,21 @@ const BlogItem = ({
   <Item>
     <Item.Image {...image} />
     <Item.Content>
+
       <Item.Header>
         <Link to={postUrl} >{title}</Link>
         &nbsp;
         <Link to={editUrl} >
           <Icon name='edit' />
         </Link>
-
       </Item.Header>
-      <Item.Description> { description } </Item.Description>
+
+      <Item.Description>
+        <Truncate lines={3}>
+          {description}
+        </Truncate>
+      </Item.Description>
+
       <Item.Meta>
         {
           `by ${get(meta, 'author')},
@@ -29,6 +36,7 @@ const BlogItem = ({
           updated ${moment(get(meta,'updatedAt')).format('L')}`
         }
       </Item.Meta>
+
       <Like likes={get(meta,'likes')} likeHandler={ likeHandler } />
     </Item.Content>
   </Item>

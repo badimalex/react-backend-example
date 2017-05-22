@@ -19,7 +19,7 @@ const ItemFull = ({
 }) => (
   <Container text>
     <Item.Content>
-      <Image centered src={image.src} className="post-image" size='medium' />
+      <Image centered src={image.src} className="post-image" fluid />
       <Header as='h2'>{title}</Header>
       <Item.Description>{ description }</Item.Description>
       { files.length ?  <Divider hidden /> && <p>Attached files:</p> : '' }
