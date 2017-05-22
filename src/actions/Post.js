@@ -36,7 +36,7 @@ export function addComment(item) {
 
 export function addPost(item) {
   const cleanItem = pick(item, ['title', 'description', 'author']);
-  const files = mapValues(item.images, (image) => { return image; });
+  const files = mapValues(item.files, (image) => { return image; });
 
   return {
     [API_CALL]: {
@@ -58,11 +58,18 @@ export function addPost(item) {
 
 export function updatePost(item) {
   const { id } = item;
+  const cleanItem = pick(item, ['title', 'description', 'author']);
+  const files = mapValues(item.files, (image) => { return image; });
+
   return {
     [API_CALL]: {
       endpoint: `posts/${id}`,
       method: 'PUT',
-      query: { post: item },
+      query: { post: cleanItem },
+      attachment: {
+        key: 'files[]',
+        files
+      },
       types: [
         types.UPDATE_POST_REQUEST,
         types.UPDATE_POST_SUCCESS,
