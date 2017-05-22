@@ -26,13 +26,13 @@ const Form = ({ handleSubmit, pristine, submitting, reset }) => (
         type="text"
         name="author"
       />
-      <div>
+      <p>
         <label htmlFor={FILE_FIELD_NAME}>Files</label>
         <Field
           name={FILE_FIELD_NAME}
           component={DropzoneInput}
         />
-      </div>
+      </p>
       {
         (!pristine && !submitting) &&
         <button className="ui button" onClick={reset}>Clear</button>
