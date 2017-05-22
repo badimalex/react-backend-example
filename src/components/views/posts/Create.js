@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 import TextareaField from 'components/ui/form/TextareaField';
 import InputField from 'components/ui/form/InputField';
 import DropzoneInput from 'components/ui/form/DropzoneInput';
-const FILE_FIELD_NAME = 'images';
+const FILE_FIELD_NAME = 'files';
 
 const Form = ({ handleSubmit, pristine, submitting, reset }) => (
   <div>
@@ -26,13 +26,13 @@ const Form = ({ handleSubmit, pristine, submitting, reset }) => (
         type="text"
         name="author"
       />
-      <p>
+      <div style={{margin: '12px 0'}}>
         <label htmlFor={FILE_FIELD_NAME}>Files</label>
         <Field
           name={FILE_FIELD_NAME}
           component={DropzoneInput}
         />
-      </p>
+      </div>
       {
         (!pristine && !submitting) &&
         <button className="ui button" onClick={reset}>Clear</button>
