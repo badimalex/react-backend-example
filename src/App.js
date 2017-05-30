@@ -33,12 +33,14 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(
-  <DevTools store={store}/>,
-  document.getElementById('devtools'),
-  () => {
-    delete window.__INITIAL_STATE__;
-  }
-);
+if (__DEVELOPMENT__) { // eslint-disable-line
+  ReactDOM.render(
+    <DevTools store={store}/>,
+    document.getElementById('devtools'),
+    () => {
+      delete window.__INITIAL_STATE__;
+    }
+  );
+}
 
 export default App;

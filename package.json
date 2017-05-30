@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "node initializers/server/index.js",
+    "build": "NODE_ENV=production node initializers/webpack/build.js",
+    "start": "NODE_ENV=production node initializers/server/index.js",
+    "start-dev": "NODE_ENV=development node initializers/server/index.js",
     "test": "jest --config jest.config.json"
   },
   "author": "",
@@ -56,7 +58,9 @@
     "eslint-plugin-destructuring": "^2.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.8.0",
+    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.9.0",
+    "fs-extra": "^3.0.1",
     "jest": "^20.0.0",
     "nightmare": "^2.10.0",
     "prop-types": "^15.5.9",
@@ -69,6 +73,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.5.1",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-server": "^2.4.5"
   }
 }
