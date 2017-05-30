@@ -23,7 +23,7 @@ application.set('view engine', 'ejs');
 if(__DEVELOPMENT__) {
   const webpack = require('webpack');
   const webpackDev = require('webpack-dev-middleware');
-  const config = require('../webpack/development.js').default;
+  const config = require('../../webpack.config.js').default;
   const webpackHot = require('webpack-hot-middleware');
   const compiler = webpack(config);
 
