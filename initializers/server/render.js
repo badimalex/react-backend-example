@@ -40,7 +40,10 @@ export default (req, res, next) => {
           res.status(200);
           res.render(
             'index',
-            { initialState, content, head, webpackAsset }
+            {
+              production: !__DEVELOPMENT__,
+              initialState, content, head, webpackAsset
+            }
           );
         })
         .catch(function(err) {
