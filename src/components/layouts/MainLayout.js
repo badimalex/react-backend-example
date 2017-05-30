@@ -25,7 +25,7 @@ export default MainLayout;
 
 const GoBackButton = () => (
   <p>
-    <Button onClick={() => history.goBack() }>Назад</Button>
+    <Button onClick={() => history.goBack() }>Back</Button>
   </p>
 );
 
