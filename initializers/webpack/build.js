@@ -1,8 +1,11 @@
-require('babel-core/register');
+var path = require('path');
+const nodeModulesPath = path.join(process.cwd(), 'node_modules');
 
-var fs = require('fs-extra');
+require(`${nodeModulesPath}/babel-core/register`);
 
-var webpack = require('webpack');
+var fs = require(`${nodeModulesPath}/fs-extra`);
+
+var webpack = require(`${nodeModulesPath}/webpack`);
 
 var config = require('./production.js').default;
 
