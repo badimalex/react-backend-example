@@ -6,7 +6,7 @@ var tmpDir = 'blog-platform-' + new Date().getTime();
 var user = 'deploy';
 
 plan.target('production', {
-  host: '45.55.234.171',
+  host: '159.203.142.189',
   username: user,
   agent: process.env.SSH_AUTH_SOCK
 });
