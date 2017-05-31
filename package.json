@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production node initializers/webpack/build.js",
+    "build": "NODE_ENV=production node ./initializers/webpack/build.js",
     "start": "NODE_ENV=production node initializers/server/index.js",
     "start-dev": "NODE_ENV=development node initializers/server/index.js",
     "test": "jest --config jest.config.json"
