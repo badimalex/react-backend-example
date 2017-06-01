@@ -6,7 +6,7 @@ import FormField from 'components/ui/form/Field';
 const InputField = (props) => (
   <FormField { ...props }>
     <DateRangePickerWrapper
-      initialDate={props.input.value}
+      initialDate={props.input && props.input.value}
       onDateChange={
         (date) => {
           props.input.onChange(formatDate(date));
