@@ -22,6 +22,7 @@ const Form = ({ handleSubmit, pristine, submitting, reset }) => (
         name="description"
       />
       <Field
+        label="Author"
         component={InputField}
         type="text"
         name="author"
