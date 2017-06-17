@@ -19,7 +19,7 @@ export default connect(
     return addCommentHandler(values)
       .then(() => { reset(); })
       .catch((data) => {
-        formErrors(data.body.errors);
+        formErrors(data.body);
       });
   }
 })(CommentForm));
